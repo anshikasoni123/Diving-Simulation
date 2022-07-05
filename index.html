@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="./components/Rotation.js"></script>
+    <script src=""></script>
+    <script src=""></script>
+  </head>
+
+  <body>
+    
+    <a-scene background="color:#026F90">
+
+      <a-entity id="look" look-controls camera position="0 5 20"></a-entity>
+
+      <!--Asset Management-->
+      <a-assets timeout="10000">        
+        <a-asset-item
+          id="scubaDiver"
+          src="./models/full_body/scene.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="island"
+          src="./models/water_refraction_with_reflection/scene.gltf"
+        ></a-asset-item>
+        
+      </a-assets>
+
+      <a-entity
+        id="ScubaModel"
+        gltf-model="#scubaDiver"
+        position="1 4.5 15"     
+        scale="1 1 1"    
+        rotation ="0 180 0"
+        plane-rotation-reader
+      >
+      </a-entity>
+
+      <a-entity
+      id="ScubaModel"
+      gltf-model="#island"
+      position="0 0 0"     
+      scale="4 4 4"    
+      screen-rotation
+      animation = "property : position; to : 0 0 100; loop : true;dur : 150000; easing:linear"
+    >
+    </a-entity>
+    </a-scene>
+  </body>
+</html>
